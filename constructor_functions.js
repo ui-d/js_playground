@@ -25,3 +25,30 @@ function getOwnProperties(obj) {
 }
 
 let a = Person.prototype.__proto__ === Object.prototype; // true
+
+
+// changine prototypal chain
+
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.sound = () => {
+  console.log(`${this.name} makes a sound`);
+}
+
+function Dog(name) {
+  this.name = name;
+}
+
+const dog = new Dog('Rex');
+
+Dog.prototype = Object.create(Animal.prototype);
+
+dog.sound; // Rex makes a sound
+
+Animal.prototype.walk = () => {
+  console.log(`${this.name} walks`);
+}
+
+dog.walk; // Rex walks
