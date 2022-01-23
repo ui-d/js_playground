@@ -52,3 +52,7 @@ Animal.prototype.walk = () => {
 }
 
 dog.walk; // Rex walks
+
+// resetting constructor (if you reset prototype like above)
+
+Dog.prototype.constructor = Dog;
