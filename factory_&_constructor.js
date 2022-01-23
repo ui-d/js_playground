@@ -37,3 +37,24 @@ function createTriangle(height, color) {
 let triangle = createTriangle(3, "blue")
 
 triangle.hasOwnProperty('draw') // false
+
+// avoiding methods duplication in factory function
+
+const newPrototype = {
+    draw: function () {
+        console.log('draw');
+    }
+}
+
+function createShape() {
+    return Object.create(newPrototype, {
+        x: {
+            value: 0,
+            enumerable: true
+        },
+        y: {
+            value: 0,
+            enumerable: true
+        }
+    });
+}
